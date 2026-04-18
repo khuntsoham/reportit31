@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "47022703750",
+    "project_id": "reporteit",
+    "storage_bucket": "reporteit.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:47022703750:android:fce4f6b8b0576db693bd07",
+        "android_client_info": {
+          "package_name": "com.example.reportit31"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSK5Wp9zkwAryo-jlnTZgovW0EjC6pCkY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
