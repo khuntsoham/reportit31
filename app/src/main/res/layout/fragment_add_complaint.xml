@@ -27,6 +27,7 @@
             app:tint="@color/white" />
 
         <TextView
+            android:id="@+id/tvHeaderTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New complaints"
@@ -136,28 +137,35 @@
                 android:inputType="textMultiLine"
                 android:importantForAutofill="no" />
 
-            <!-- Location -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Location *"
-                android:textColor="@color/text_main"
-                android:textStyle="bold"
-                android:textSize="14sp"
-                android:layout_marginBottom="8dp"/>
-
-            <EditText
-                android:id="@+id/etLocation"
+            <!-- Location Section -->
+            <LinearLayout
+                android:id="@+id/tilLocation"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:background="@drawable/bg_input"
-                android:hint="Tower, Floor, Flat number"
-                android:paddingHorizontal="16dp"
-                android:textSize="15sp"
-                android:textColor="@color/text_main"
-                android:layout_marginBottom="24dp"
-                android:inputType="text"
-                android:importantForAutofill="no" />
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Location *"
+                    android:textColor="@color/text_main"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="8dp"/>
+
+                <EditText
+                    android:id="@+id/etLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:background="@drawable/bg_input"
+                    android:hint="Tower, Floor, Flat number"
+                    android:paddingHorizontal="16dp"
+                    android:textSize="15sp"
+                    android:textColor="@color/text_main"
+                    android:layout_marginBottom="24dp"
+                    android:inputType="text"
+                    android:importantForAutofill="no" />
+            </LinearLayout>
 
             <!-- Add Photo Evidence -->
             <TextView

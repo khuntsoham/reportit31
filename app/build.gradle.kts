@@ -18,6 +18,12 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    packaging {
+        jniLibs {
+            useLegacyPackaging = true
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -53,7 +59,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     
     // Cloudinary for Image Upload
-    implementation("com.cloudinary:cloudinary-android:3.0.2")
+    implementation("com.cloudinary:cloudinary-android:3.1.2")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

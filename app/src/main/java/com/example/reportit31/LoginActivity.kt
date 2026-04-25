@@ -64,6 +64,9 @@ class LoginActivity : AppCompatActivity() {
         binding.progressBar.visibility = View.VISIBLE
         binding.btnLogin.isEnabled = false
 
+        // Clear any ghost/expired sessions immediately prior to forcing a clean login ping
+        auth.signOut()
+
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -82,7 +85,7 @@ class LoginActivity : AppCompatActivity() {
         database.child("Users").child(uid).child("role").get().addOnSuccessListener { snapshot ->
             binding.progressBar.visibility = View.GONE
             val role = snapshot.value.toString()
-            if (role == "admin") {
+            if (role.equals("admin", ignoreCase = true)) {
                 startActivity(Intent(this, AdminDashboardActivity::class.java))
             } else {
                 startActivity(Intent(this, DashboardActivity::class.java))

@@ -7,14 +7,11 @@ import com.example.reportit31.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import android.content.Intent
-import android.text.method.HideReturnsTransformationMethod
-import android.text.method.PasswordTransformationMethod
 import android.view.View
 
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
-    private var isPasswordVisible = false
     private lateinit var auth: FirebaseAuth
     private val database = FirebaseDatabase.getInstance().reference
 
@@ -25,10 +22,6 @@ class RegisterActivity : AppCompatActivity() {
         UIUtils.hideNavigationBar(this)
 
         auth = FirebaseAuth.getInstance()
-
-        binding.ivBack.setOnClickListener { finish() }
-
-        binding.ivTogglePassword.setOnClickListener { togglePasswordVisibility() }
 
         binding.btnRegister.setOnClickListener {
             registerUser()
@@ -41,6 +34,9 @@ class RegisterActivity : AppCompatActivity() {
     private fun registerUser() {
         val name = binding.etName.text.toString().trim()
         val email = binding.etEmail.text.toString().trim()
+        val phone = binding.etPhone.text.toString().trim()
+        val wing = binding.etWing.text.toString().trim()
+        val flat = binding.etFlat.text.toString().trim()
         val password = binding.etPassword.text.toString().trim()
         val confirmPassword = binding.etConfirmPassword.text.toString().trim()
         val termsChecked = binding.cbTerms.isChecked
@@ -82,7 +78,10 @@ class RegisterActivity : AppCompatActivity() {
                         "uid" to userId,
                         "name" to name,
                         "email" to email,
-                        "role" to "user",
+                        "phone" to phone,
+                        "wing" to wing,
+                        "flat" to flat,
+                        "role" to "Resident",
                         "createdAt" to System.currentTimeMillis()
                     )
 
@@ -115,18 +114,5 @@ class RegisterActivity : AppCompatActivity() {
                     Toast.makeText(this, "Registration Failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }
-    }
-
-    private fun togglePasswordVisibility() {
-        isPasswordVisible = !isPasswordVisible
-        val transformation = if (isPasswordVisible) {
-            HideReturnsTransformationMethod.getInstance()
-        } else {
-            PasswordTransformationMethod.getInstance()
-        }
-        binding.etPassword.transformationMethod = transformation
-        binding.etConfirmPassword.transformationMethod = transformation
-        binding.etPassword.setSelection(binding.etPassword.text.length)
-        binding.etConfirmPassword.setSelection(binding.etConfirmPassword.text.length)
     }
 }
